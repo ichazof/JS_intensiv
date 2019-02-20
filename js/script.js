@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
             cartWrapper.appendChild(item);
             
             if (empty) {
-                empty.remove();
+                empty.style.display = 'none';
             }
             calcTotal();  
             deleteFromCart();          
@@ -95,11 +95,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 calcGoods(0);
                 calcTotal();
                 if (cartWrapper.querySelectorAll('.goods__item').length == 0) {
-                    const emptyText = document.createElement('div');
-                    emptyText.classList.add('empty');
-                    //empty.querySelector('.empty').textContent = 'Ваша корзина пуста';
-                    cartWrapper.appendChild(emptyText);
-                    cartWrapper.querySelector('.empty').textContent = 'Ваша корзина пуста';
+                    // const emptyText = document.createElement('div');
+                    // emptyText.classList.add('empty');
+                    // //empty.querySelector('.empty').textContent = 'Ваша корзина пуста';
+                    // cartWrapper.appendChild(emptyText);
+                    // cartWrapper.querySelector('.empty').textContent = 'Ваша корзина пуста';
+                    empty = cartWrapper.querySelector('.empty');
+                    empty.style.display = '';
                 };
             });
         });
