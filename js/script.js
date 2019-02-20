@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 empty = cartWrapper.querySelector('.empty');
             trigger.remove();
             showConfirm();
-            calcGoods(1);
+            
             removeBtn.classList.add('goods__item-remove');
             removeBtn.innerHTML = '&times';
             item.appendChild(removeBtn);
@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 empty.style.display = 'none';
             }
             calcTotal();  
+            calcGoods();
             deleteFromCart();          
         });
     });
@@ -70,9 +71,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function calcGoods(i) {
+    function calcGoods() {
         const items = cartWrapper.querySelectorAll('.goods__item');
-        badge.textContent = i + items.length;
+        badge.textContent = items.length;
 
     }
 
@@ -92,14 +93,9 @@ window.addEventListener('DOMContentLoaded', () => {
         removeBtn.forEach(function(btn) {
             btn.addEventListener('click', () => {
                 btn.parentElement.remove();
-                calcGoods(0);
+                calcGoods();
                 calcTotal();
                 if (cartWrapper.querySelectorAll('.goods__item').length == 0) {
-                    // const emptyText = document.createElement('div');
-                    // emptyText.classList.add('empty');
-                    // //empty.querySelector('.empty').textContent = 'Ваша корзина пуста';
-                    // cartWrapper.appendChild(emptyText);
-                    // cartWrapper.querySelector('.empty').textContent = 'Ваша корзина пуста';
                     empty = cartWrapper.querySelector('.empty');
                     empty.style.display = '';
                 };
